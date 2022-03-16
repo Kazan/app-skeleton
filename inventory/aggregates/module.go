@@ -61,10 +61,12 @@ func (m *Module) getOne() gin.HandlerFunc {
 func (m *Module) sanitize() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		if c.Request.Body == http.NoBody {
+			c.Next()
 			return
 		}
 
 		if c.ContentType() == m.version {
+			c.Next()
 			return
 		}
 
