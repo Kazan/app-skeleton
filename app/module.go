@@ -5,6 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/kazan/app-skeleton/inventory/aggregates"
+	"github.com/kazan/app-skeleton/inventory/otherstuff"
 )
 
 const V1 string = "application/vnd.lovelyplace.v1+json"
@@ -20,6 +21,7 @@ func Load(r *gin.Engine) error {
 	// Configure the application modules to load
 	mods := []Module{
 		aggregates.New(V1, repository),
+		otherstuff.New(V1, repository),
 	}
 
 	// Boot up all modules
